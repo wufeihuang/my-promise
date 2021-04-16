@@ -11,15 +11,18 @@ const p = new Promise((resolve, reject) => {
 
 p.then(() => {
   console.log('2')
-}).then(() => {
-  console.log('3')
+  return 2
+}).then((v) => {
+  console.log('3', v)
 })
 
 console.log('4')
 
 p.then(() => {
   console.log('5')
-  throw new Error('error 6')
-}).catch((e) => {
-  console.log(e && e.message)
+  return 3
+  // throw new Error('error 6')
+}).then((v) => {
+  // console.log(e && e.message)
+  console.log('6', v)
 })
